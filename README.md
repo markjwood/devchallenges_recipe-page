@@ -56,6 +56,6 @@ This application/site was created as a submission to a [DevChallenges](https://d
 
 ## Contact
 
-- Website [your-website.com](https://www.markjwood.com)
-- GitHub [@your-username](https://github.com/markjwood)
-- Twitter [@your-twitter](https://twitter.com/MarkJasonWood)
+- Website [markjwood.com](https://www.markjwood.com)
+- GitHub [@markjwood](https://github.com/markjwood)
+- Twitter [@MarkJasonWood](https://twitter.com/MarkJasonWood)
