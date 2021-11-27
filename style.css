@@ -1,0 +1,401 @@
+/* ----------------- */
+/* custom properties */
+/* ----------------- */
+
+:root {
+	/* font-families */
+	--ff-sans: 'Poppins', sans-serif;
+	--ff-serif: 'Playfair Display', serif;
+
+	/* colors */
+	--hsl-white: 0 0% 98%;
+	--hsl-black: 0 0% 20%;
+	--hsl-gray: 0 0% 74%;
+	--hsl-highlight: 28 87% 62%;
+
+	/* --------------------- */
+	/* small screen defaults */
+	/* --------------------- */
+
+	/* font-sizes */
+	--fs-50: 0.5rem; /* 8px */
+	--fs-100: 0.625rem; /* 10px */
+	--fs-200: 0.75rem; /* 12px */
+	--fs-300: 0.875rem; /* 14px */
+	--fs-400: 1rem; /* 16px */
+	--fs-500: 1.125rem; /* 18px */
+	--fs-700: 1.5rem; /* 24px */
+	--fs-900: 2rem; /* 32px */
+
+	/* container */
+	--container-width: 35em;
+}
+
+/* ----------------- */
+/* reset             */
+/* ----------------- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body,
+p,
+h1,
+h2,
+h3 {
+	margin: 0;
+}
+
+img,
+picture {
+	display: block;
+	max-width: 100%;
+}
+
+button,
+input,
+textarea,
+figcaption {
+	font: inherit;
+}
+
+button {
+	cursor: pointer;
+}
+
+nav > ul {
+	list-style: none;
+}
+
+/* ----------------- */
+/* typography        */
+/* ----------------- */
+
+h1,
+h2,
+h3 {
+	font-family: var(--ff-serif);
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+h1 {
+	font-size: var(--fs-700);
+}
+
+h2 {
+	font-size: var(--fs-500);
+}
+
+h3 {
+	font-size: var(--fs-500);
+	font-weight: 400;
+	font-style: italic;
+}
+
+/* ----------------- */
+/* utility classes   */
+/* ----------------- */
+
+.container {
+	max-width: var(--container-width);
+	margin-inline: auto;
+	padding-inline: 1em;
+}
+
+.highlight {
+	color: hsl(var(--hsl-highlight));
+}
+
+.lighter {
+	color: hsl(var(--hsl-gray));
+}
+
+.small {
+	font-size: var(--fs-100);
+}
+
+.smallest {
+	font-size: var(--fs-50);
+}
+
+.large {
+	font-size: var(--fs-700);
+}
+
+.largest {
+	font-size: var(--fs-900);
+}
+
+.caps {
+	text-transform: uppercase;
+}
+
+.sans {
+	font-family: var(--ff-sans);
+}
+
+.serif {
+	font-family: var(--ff-serif);
+}
+
+.normal {
+	font-weight: 400;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.flow-content > * + * {
+	margin-top: var(--spacer, 1em);
+}
+
+/* ----------------- */
+/* general styling   */
+/* ----------------- */
+
+body {
+	min-height: 100vh;
+	line-height: 1.6;
+	display: flex;
+	flex-direction: column;
+	font-family: var(--ff-sans);
+	font-size: var(--fs-400);
+	background-color: hsl(var(--hsl-white) / var(--alpha, 1));
+	color: hsl(var(--hsl-black) / var(--alpha, 1));
+}
+
+.recipe-header {
+	padding-block: 4.625em 3em;
+}
+
+.recipe-description > p {
+	font-size: var(--fs-200);
+	font-style: italic;
+}
+
+.recipe-description {
+	display: flex;
+	gap: 1em;
+	align-items: start;
+	margin-block: 0.75em 2em;
+}
+
+.recipe-description > img {
+	padding-top: 0.25em;
+}
+
+.yield,
+.overview,
+.overview > div {
+	display: flex;
+}
+
+.overview {
+	justify-content: space-between;
+}
+
+.recipe-info .material-icons {
+	margin-right: 0.25em;
+}
+
+/* ingredients list */
+
+.ingredients {
+	font-size: var(--fs-300);
+}
+
+.ingredients-list {
+	padding-left: 0;
+}
+
+.ingredients-list > li {
+	list-style: none;
+
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.75em;
+}
+
+.checked {
+	--checked: hsl(var(--hsl-highlight) / 0.5);
+}
+
+.ingredients-list > li::before {
+	content: '';
+	background-color: var(--checked, none);
+	height: 1.5em;
+	width: 1.5em;
+	border: 2px solid hsl(var(--hsl-gray));
+	border-radius: 5px;
+	transition: background 300ms;
+}
+
+/* instructions numbered list */
+.instructions {
+	--spacer: 2em;
+	font-size: var(--fs-400);
+}
+
+.instructions-list {
+	list-style: none;
+	counter-reset: count;
+	padding-left: 0;
+}
+
+.instructions-list > li {
+	counter-increment: count;
+
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.75em;
+}
+
+.instructions-list > li::before {
+	content: counter(count);
+	line-height: 1.3;
+	font-size: var(--fs-700);
+	font-family: var(--ff-serif);
+	font-weight: 700;
+	background-color: hsl(var(--hsl-highlight));
+	color: hsl(var(--hsl-white));
+	height: 1.5em;
+	min-width: 1.5em;
+	padding: 0 0 0.25em 0;
+	display: grid;
+	place-items: center;
+	border-radius: 5px;
+}
+
+/*  */
+.info-head {
+	font-size: var(--fs-50);
+	text-transform: uppercase;
+	color: hsl(var(--hsl-gray));
+}
+
+.recipe-footer {
+	color: hsl(var(--hsl-gray) / 0.8);
+	font-size: var(--fs-200);
+	margin-top: 2rem;
+}
+
+/* footer */
+footer {
+	padding: 1.5em;
+	margin-top: 8rem;
+	text-align: center;
+	color: hsl(var(--hsl-black) / 0.6);
+	background-color: hsl(var(--hsl-highlight) / 0.1);
+}
+
+footer > p > a {
+	color: inherit;
+	text-decoration-color: hsl(var(--hsl-highlight));
+	text-decoration-thickness: 3px;
+	transition: color 300ms;
+}
+
+footer > p > a:hover {
+	color: hsl(var(--hsl-highlight));
+}
+
+.social > ul {
+	list-style: none;
+	margin: 0.25em auto 0;
+	display: flex;
+	max-width: 8em;
+	gap: 0.75em;
+	justify-content: space-between;
+}
+
+.social a {
+	color: hsl(var(--hsl-black) / var(--alpha, 0.8));
+	transition: color 300ms;
+}
+
+.social a:hover {
+	--alpha: 0.4;
+}
+
+/* ----------------- */
+/* media queries     */
+/* ----------------- */
+
+@media screen and (min-width: 50em) {
+	:root {
+		--container-width: 60em;
+
+		--fs-50: 0.625rem;
+		--fs-100: 0.875rem;
+		--fs-200: 0.875rem;
+		--fs-300: 1rem;
+		--fs-400: 1.125rem;
+		--fs-500: 1.5rem;
+		--fs-700: 1.5rem;
+		--fs-900: 3rem;
+	}
+
+	h1 {
+		font-size: var(--fs-900);
+	}
+	h3 {
+		font-size: var(--fs-400);
+	}
+
+	.recipe-header {
+		position: relative;
+	}
+	.recipe-info {
+		position: absolute;
+		top: calc(100% - 1.5rem);
+		right: 0;
+		width: 13.5rem;
+		padding: 2.5rem;
+		border-radius: 12px;
+		box-shadow: 0px 0px 20px 0px hsl(0 0% 0% / 0.1);
+	}
+	.recipe-info .material-icons {
+		font-size: 2em;
+	}
+	.overview {
+		flex-direction: column;
+		gap: 1.5em;
+	}
+
+	.ingredients,
+	.instructions,
+	.recipe-description {
+		padding-right: 27rem;
+	}
+
+	.ingredients {
+		--spacer: 2em;
+	}
+	.ingredients h3 {
+		margin-bottom: 2em;
+	}
+	.ingredients-list {
+		--spacer: 0.75em;
+	}
+	.instructions h2 {
+		margin-bottom: 1em;
+	}
+
+	.ingredients-list > li::before {
+		height: 1.25em;
+		width: 1.25em;
+	}
+
+	.recipe-footer {
+		font-size: var(--fs-400);
+	}
+}
